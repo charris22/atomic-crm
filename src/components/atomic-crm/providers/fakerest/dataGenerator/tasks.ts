@@ -37,6 +37,7 @@ export const generateTasks = (db: Db) => {
   return Array.from(Array(400).keys()).map<Task>((id) => {
     const contact = random.arrayElement(db.contacts);
     contact.nb_tasks++;
+    const sale = random.arrayElement(db.sales);
     return {
       id,
       contact_id: contact.id,
@@ -47,7 +48,7 @@ export const generateTasks = (db: Db) => {
         new Date(Date.now() + 100 * 24 * 60 * 60 * 1000),
       ).toISOString(),
       done_date: undefined,
-      sales_id: 0,
+      sales_id: sale.id,
     };
   });
 };

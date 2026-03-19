@@ -20,6 +20,7 @@ import {
 import type { Sale } from "../types";
 import { Avatar } from "./Avatar";
 import { AutocompleteCompanyInput } from "../companies/AutocompleteCompanyInput.tsx";
+import { useConfigurationContext } from "../root/ConfigurationContext";
 
 export const ContactInputs = () => {
   const isMobile = useIsMobile();
@@ -198,12 +199,20 @@ const ContactPersonalInformationInputs = () => {
 
 const ContactMiscInputs = () => {
   const translate = useTranslate();
+  const { noteStatuses } = useConfigurationContext();
   return (
     <div className="flex flex-col gap-4">
       <h6 className="text-lg font-semibold">
         {translate("resources.contacts.field_categories.misc")}
       </h6>
       <TextInput source="background" multiline helperText={false} />
+      <SelectInput
+        source="status"
+        choices={noteStatuses}
+        optionText="label"
+        optionValue="value"
+        helperText={false}
+      />
       <BooleanInput source="has_newsletter" helperText={false} />
       <ReferenceInput
         reference="sales"

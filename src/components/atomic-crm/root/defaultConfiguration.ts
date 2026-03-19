@@ -1,11 +1,11 @@
 import type { ConfigurationContextValue } from "./ConfigurationContext";
 
-export const defaultDarkModeLogo = "./logos/logo_atomic_crm_dark.svg";
-export const defaultLightModeLogo = "./logos/logo_atomic_crm_light.svg";
+export const defaultDarkModeLogo = "./logos/houndstooth-dog.png";
+export const defaultLightModeLogo = "./logos/houndstooth-dog.png";
 
 export const defaultCurrency = "USD";
 
-export const defaultTitle = "Atomic CRM";
+export const defaultTitle = "Houndstooth Clothing Co";
 
 export const defaultCompanySectors = [
   { value: "communication-services", label: "Communication Services" },
@@ -16,7 +16,7 @@ export const defaultCompanySectors = [
   { value: "health-care", label: "Health Care" },
   { value: "industrials", label: "Industrials" },
   { value: "information-technology", label: "Information Technology" },
-  { value: "materials", label: "Materials" },
+  { value: "manufacturing", label: "Manufacturing" },
   { value: "real-estate", label: "Real Estate" },
   { value: "utilities", label: "Utilities" },
 ];
@@ -26,11 +26,13 @@ export const defaultDealStages = [
   { value: "proposal-sent", label: "Proposal Sent" },
   { value: "in-negociation", label: "In Negotiation" },
   { value: "won", label: "Won" },
+  { value: "printing", label: "Printing" },
+  { value: "shipped", label: "Shipped" },
   { value: "lost", label: "Lost" },
   { value: "delayed", label: "Delayed" },
 ];
 
-export const defaultDealPipelineStatuses = ["won"];
+export const defaultDealPipelineStatuses = ["won", "printing", "shipped"];
 
 export const defaultDealCategories = [
   { value: "other", label: "Other" },

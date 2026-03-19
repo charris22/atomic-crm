@@ -297,6 +297,7 @@ export const frenchCrmMessages = {
         due_date: "Date d'échéance",
         type: "Type",
         contact_id: "Contact",
+        sales_id: "Assigné à",
         due_short: "échéance",
       },
       action: {

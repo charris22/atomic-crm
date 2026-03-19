@@ -124,9 +124,9 @@ export const englishCrmMessages = {
       },
       inputs: {
         genders: {
-          male: "He/Him",
-          female: "She/Her",
-          nonbinary: "They/Them",
+          male: "Mr.",
+          female: "Mrs.",
+          nonbinary: "Ms.",
         },
         personal_info_types: {
           work: "Work",
@@ -292,6 +292,7 @@ export const englishCrmMessages = {
         due_date: "Due date",
         type: "Type",
         contact_id: "Contact",
+        sales_id: "Assigned to",
         due_short: "due",
       },
       action: {

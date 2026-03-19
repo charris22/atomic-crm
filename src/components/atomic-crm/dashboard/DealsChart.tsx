@@ -23,7 +23,7 @@ const DEFAULT_LOCALE = "en-US";
 
 export const DealsChart = memo(() => {
   const translate = useTranslate();
-  const { dealStages, currency } = useConfigurationContext();
+  const { dealStages, dealPipelineStatuses, currency } = useConfigurationContext();
   const acceptedLanguages = navigator
     ? navigator.languages || [navigator.language]
     : [DEFAULT_LOCALE];
@@ -33,17 +33,17 @@ export const DealsChart = memo(() => {
   const { data, isPending } = useGetList<Deal>("deals", {
     pagination: { perPage: 100, page: 1 },
     sort: {
-      field: "created_at",
+      field: "expected_closing_date",
       order: "ASC",
     },
     filter: {
-      "created_at@gte": threeMonthsAgo,
+      "expected_closing_date@gte": threeMonthsAgo,
     },
   });
   const months = useMemo(() => {
     if (!data) return [];
     const dealsByMonth = data.reduce((acc, deal) => {
-      const month = startOfMonth(deal.created_at ?? new Date()).toISOString();
+      const month = startOfMonth(deal.expected_closing_date ?? new Date()).toISOString();
       if (!acc[month]) {
         acc[month] = [];
       }
@@ -51,20 +51,21 @@ export const DealsChart = memo(() => {
       return acc;
     }, {} as any);
 
+    const completedStages = dealPipelineStatuses;
     const amountByMonth = Object.keys(dealsByMonth).map((month) => {
       return {
         date: format(month, "MMM"),
         won: dealsByMonth[month]
-          .filter((deal: Deal) => deal.stage === "won")
+          .filter((deal: Deal) => completedStages.includes(deal.stage))
           .reduce((acc: number, deal: Deal) => {
             acc += deal.amount;
             return acc;
           }, 0),
         pending: dealsByMonth[month]
-          .filter((deal: Deal) => !["won", "lost"].includes(deal.stage))
+          .filter((deal: Deal) => !completedStages.includes(deal.stage) && deal.stage !== "lost")
           .reduce((acc: number, deal: Deal) => {
             // @ts-expect-error - multiplier type issue
-            acc += deal.amount * multiplier[deal.stage];
+            acc += deal.amount * (multiplier[deal.stage] ?? 0.5);
             return acc;
           }, 0),
         lost: dealsByMonth[month]
@@ -77,7 +78,7 @@ export const DealsChart = memo(() => {
     });
 
     return amountByMonth;
-  }, [data]);
+  }, [data, dealPipelineStatuses]);
 
   if (isPending) return null; // FIXME return skeleton instead
   const range = months.reduce(

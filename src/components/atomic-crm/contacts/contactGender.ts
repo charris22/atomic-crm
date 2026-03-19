@@ -5,9 +5,9 @@ import type { ContactGender } from "../types";
 type TranslateFn = (key: string, options?: { [key: string]: any }) => string;
 
 export const contactGenderDefaultLabels: Record<string, string> = {
-  male: "He/Him",
-  female: "She/Her",
-  nonbinary: "They/Them",
+  male: "Mr.",
+  female: "Mrs.",
+  nonbinary: "Ms.",
 };
 
 const personalInfoTypeMap: Record<string, string> = {

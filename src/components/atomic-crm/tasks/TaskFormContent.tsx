@@ -7,6 +7,10 @@ import { DateTimeInput } from "@/components/admin";
 
 import { contactOptionText } from "../misc/ContactOption";
 import { useConfigurationContext } from "../root/ConfigurationContext";
+import type { Sale } from "../types";
+
+const saleOptionRenderer = (choice: Sale) =>
+  `${choice.first_name} ${choice.last_name}`;
 
 export const TaskFormContent = ({
   selectContact,
@@ -30,7 +34,6 @@ export const TaskFormContent = ({
             label="resources.tasks.fields.contact_id"
             optionText={contactOptionText}
             helperText={false}
-            validate={required()}
             modal
           />
         </ReferenceInput>
@@ -52,6 +55,19 @@ export const TaskFormContent = ({
           helperText={false}
         />
       </div>
+      <ReferenceInput
+        reference="sales"
+        source="sales_id"
+        sort={{ field: "last_name", order: "ASC" }}
+        filter={{
+          "disabled@neq": true,
+        }}
+      >
+        <SelectInput
+          helperText={false}
+          optionText={saleOptionRenderer}
+        />
+      </ReferenceInput>
     </div>
   );
 };

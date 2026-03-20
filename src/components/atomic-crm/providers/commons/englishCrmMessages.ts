@@ -134,6 +134,11 @@ export const englishCrmMessages = {
           other: "Other",
         },
       },
+      autocomplete: {
+        create_error: "An error occurred while creating the contact",
+        create_item: "Create %{item}",
+        create_label: "Start typing to create a new contact",
+      },
       list: {
         error_loading: "Error loading contacts",
       },

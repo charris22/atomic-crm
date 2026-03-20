@@ -138,6 +138,11 @@ export const frenchCrmMessages = {
           other: "Autre",
         },
       },
+      autocomplete: {
+        create_error: "Une erreur est survenue lors de la création du contact",
+        create_item: "Créer %{item}",
+        create_label: "Commencez à taper pour créer un nouveau contact",
+      },
       list: {
         error_loading: "Erreur lors du chargement des contacts",
       },

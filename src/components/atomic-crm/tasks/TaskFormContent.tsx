@@ -1,11 +1,10 @@
-import { AutocompleteInput } from "@/components/admin/autocomplete-input";
 import { ReferenceInput } from "@/components/admin/reference-input";
 import { SelectInput } from "@/components/admin/select-input";
 import { TextInput } from "@/components/admin/text-input";
 import { required } from "ra-core";
 import { DateTimeInput } from "@/components/admin";
 
-import { contactOptionText } from "../misc/ContactOption";
+import { AutocompleteContactInput } from "../contacts/AutocompleteContactInput";
 import { useConfigurationContext } from "../root/ConfigurationContext";
 import type { Sale } from "../types";
 
@@ -29,13 +28,8 @@ export const TaskFormContent = ({
         helperText={false}
       />
       {selectContact && (
-        <ReferenceInput source="contact_id" reference="contacts_summary">
-          <AutocompleteInput
-            label="resources.tasks.fields.contact_id"
-            optionText={contactOptionText}
-            helperText={false}
-            modal
-          />
+        <ReferenceInput source="contact_id" reference="contacts">
+          <AutocompleteContactInput label="resources.tasks.fields.contact_id" />
         </ReferenceInput>
       )}
 

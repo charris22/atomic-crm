@@ -124,7 +124,7 @@ export const SignupPage = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="first_name">
-                {translate("ra.auth.first_name")}
+                {translate("ra.auth.first_name", { _: "First name" })}
               </Label>
               <Input
                 {...register("first_name", { required: true })}
@@ -135,7 +135,7 @@ export const SignupPage = () => {
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="last_name">
-                {translate("ra.auth.last_name")}
+                {translate("ra.auth.last_name", { _: "Last name" })}
               </Label>
               <Input
                 {...register("last_name", { required: true })}
@@ -145,7 +145,7 @@ export const SignupPage = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="email">{translate("ra.auth.email")}</Label>
+              <Label htmlFor="email">{translate("ra.auth.email", { _: "Email" })}</Label>
               <Input
                 {...register("email", { required: true })}
                 id="email"
@@ -154,7 +154,7 @@ export const SignupPage = () => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor="password">{translate("ra.auth.password")}</Label>
+              <Label htmlFor="password">{translate("ra.auth.password", { _: "Password" })}</Label>
               <Input
                 {...register("password", { required: true })}
                 id="password"

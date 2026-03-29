@@ -81,45 +81,11 @@ export type PhoneNumberAndType = {
   type: "Work" | "Home" | "Other";
 };
 
-export type Contact = {
-  first_name: string;
-  last_name: string;
-  title: string;
-  company_id?: Identifier | null;
-  email_jsonb: EmailAndType[];
-  avatar?: Partial<RAFile>;
-  linkedin_url?: string | null;
-  first_seen: string;
-  last_seen: string;
-  has_newsletter: boolean;
-  tags: Identifier[];
-  gender: string;
-  sales_id?: Identifier;
-  status: string;
-  background: string;
-  phone_jsonb: PhoneNumberAndType[];
-  nb_tasks?: number;
-  company_name?: string;
-} & Pick<RaRecord, "id">;
-
-export type ContactNote = {
-  contact_id: Identifier;
-  text: string;
-  date: string;
-  sales_id: Identifier;
-  status: string;
-  attachments?: AttachmentNote[];
-} & Pick<RaRecord, "id">;
-
-export type Deal = {
-  name: string;
-  company_id: Identifier;
-  contact_ids: Identifier[];
-  category: string;
-  stage: string;
-  description: string;
-  amount: number;
-  created_at: string;
+export interface ContactGender {
+  value: string;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+}
   updated_at: string;
   archived_at?: string;
   expected_closing_date: string;

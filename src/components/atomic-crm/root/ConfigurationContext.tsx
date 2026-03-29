@@ -17,6 +17,7 @@ export interface ConfigurationContextValue {
   title: string;
   darkModeLogo: string;
   lightModeLogo: string;
+  enableGoogleAuth?: boolean;
   googleWorkplaceDomain?: string;
   disableEmailPasswordAuthentication?: boolean;
 }
